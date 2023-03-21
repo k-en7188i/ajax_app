@@ -1,16 +1,15 @@
 const buildHTML = (XHR) => {
   const item = XHR.response.post;
   const html = `
-  <div class="post">
-    <div class="post-date">
-      投稿日時：${item.created_at}
-    </div>
-    <div class="post-content">
-      ${item.content}
-    </div>
-  </div>`;
-return html;
-
+    <div class="post">
+      <div class="post-date">
+        投稿日時：${item.created_at}
+      </div>
+      <div class="post-content">
+        ${item.content}
+      </div>
+    </div>`;
+  return html;
 };
 
 function post (){
@@ -21,8 +20,6 @@ function post (){
     const formData = new FormData(form);
     const XHR = new XMLHttpRequest();
     XHR.open("POST", "/posts", true);
-    // posts → postにする
-    // XHR.open("POST", "/post", true);
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
@@ -37,5 +34,5 @@ function post (){
     };
   });
 };
- 
- window.addEventListener('load', post);
+
+window.addEventListener('load', post);
